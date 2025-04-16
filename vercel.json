@@ -2,20 +2,16 @@
   "version": 2,
   "buildCommand": "npm run build && npm run build-storybook",
   "installCommand": "npm install",
-  "outputDirectory": "storybook-static",
+  "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { 
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/storybook",
-      "destination": "/index.html"
-    },
     {
       "source": "/storybook/(.*)",
-      "destination": "/$1"
+      "destination": "/storybook-static/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -23,8 +19,8 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https: http:;"
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }

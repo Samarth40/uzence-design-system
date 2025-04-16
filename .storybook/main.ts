@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
+    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-viewport",
@@ -16,20 +17,17 @@ const config: StorybookConfig = {
     "@storybook/addon-backgrounds",
     "@storybook/addon-measure",
     "@storybook/addon-outline",
-    "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test"
+    "@chromatic-com/storybook"
   ],
   "framework": {
     "name": "@storybook/react-vite",
-    "options": {
-      "strictMode": false
-    }
+    "options": {}
   },
   "docs": {
     "autodocs": "tag",
     "defaultName": "Documentation"
   },
-  "staticDirs": ["../public", "../dist"],
+  "staticDirs": ["../public"],
   "core": {
     "builder": "@storybook/builder-vite",
     "disableTelemetry": true
@@ -43,6 +41,7 @@ const config: StorybookConfig = {
       ...config,
       build: {
         ...config.build,
+        chunkSizeWarningLimit: 1600,
         sourcemap: false,
         minify: "terser",
         terserOptions: {
