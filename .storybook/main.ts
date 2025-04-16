@@ -27,7 +27,6 @@ const config: StorybookConfig = {
     "autodocs": "tag",
     "defaultName": "Documentation"
   },
-  "staticDirs": ["../public"],
   "core": {
     "builder": "@storybook/builder-vite",
     "disableTelemetry": true
