@@ -6,12 +6,9 @@
       "use": "@vercel/static-build",
       "config": {
         "buildCommand": "npm run build && npm run build-storybook",
-        "outputDirectory": "dist"
+        "outputDirectory": ".",
+        "distDir": "dist"
       }
-    },
-    {
-      "src": "storybook-static/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -24,7 +21,20 @@
       "dest": "/storybook-static/$1"
     },
     {
-      "handle": "filesystem"
+      "src": "/sb-(.*)/(.*)",
+      "dest": "/storybook-static/sb-$1/$2"
+    },
+    {
+      "src": "/favicon.svg",
+      "dest": "/storybook-static/favicon.svg"
+    },
+    {
+      "src": "/(.*).js",
+      "dest": "/storybook-static/$1.js"
+    },
+    {
+      "src": "/(.*).css",
+      "dest": "/storybook-static/$1.css"
     },
     {
       "src": "/(.*)",
