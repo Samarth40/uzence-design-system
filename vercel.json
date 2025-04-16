@@ -1,27 +1,24 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "npm run vercel-build",
-        "outputDirectory": "."
-      }
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "storybook-static",
+  "framework": "vite",
+  "rewrites": [
+    { 
+      "source": "/",
+      "destination": "/dist/index.html"
     },
     {
-      "src": "storybook-static/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "rewrites": [
+      "source": "/assets/:path*",
+      "destination": "/dist/assets/:path*"
+    },
     {
       "source": "/storybook",
-      "destination": "/storybook-static/index.html"
+      "destination": "/index.html"
     },
     {
-      "source": "/storybook/:path*",
-      "destination": "/storybook-static/:path*"
+      "source": "/storybook/(.*)",
+      "destination": "/$1"
     }
   ]
 } 
