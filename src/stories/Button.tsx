@@ -1,5 +1,3 @@
-import { Meta, StoryFn } from '@storybook/react';
-
 import './button.css';
 
 export interface ButtonProps {
