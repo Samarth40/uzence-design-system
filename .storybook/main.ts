@@ -21,7 +21,9 @@ const config: StorybookConfig = {
   ],
   "framework": {
     "name": "@storybook/react-vite",
-    "options": {}
+    "options": {
+      "strictMode": false
+    }
   },
   "docs": {
     "autodocs": "tag",
@@ -29,7 +31,8 @@ const config: StorybookConfig = {
   },
   "staticDirs": ["../public"],
   "core": {
-    "builder": "@storybook/builder-vite"
+    "builder": "@storybook/builder-vite",
+    "disableTelemetry": true
   },
   "typescript": {
     "check": true,
@@ -47,6 +50,12 @@ const config: StorybookConfig = {
             drop_console: true,
             drop_debugger: true
           }
+        }
+      },
+      server: {
+        ...config.server,
+        fs: {
+          strict: false
         }
       }
     };

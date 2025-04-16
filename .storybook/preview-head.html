@@ -1,0 +1,12 @@
+<!-- .storybook/preview-head.html -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https: http:;">
+<script>
+  // Allow Storybook's iframe to access window.parent
+  if (window.parent !== window) {
+    try {
+      window.__STORYBOOK_PREVIEW__ = window.parent.__STORYBOOK_PREVIEW__;
+    } catch (e) {
+      console.warn('Unable to access parent window');
+    }
+  }
+</script> 
