@@ -10,4 +10,19 @@
       console.warn('Unable to access parent window');
     }
   }
-</script> 
+</script>
+<link rel="stylesheet" href="/storybook/index.css">
+<style>
+  /* Ensure proper styling in Storybook */
+  #storybook-root {
+    padding: 1rem;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #1a1a1a;
+      color: #ffffff;
+    }
+  }
+</style> 
