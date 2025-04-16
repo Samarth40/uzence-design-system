@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Tag from './components/data-display/Tag/Tag';
 import Tabs from './components/navigation/Tabs/Tabs';
 import Button from './components/forms/Button/Button';
