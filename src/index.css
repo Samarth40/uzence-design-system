@@ -1,0 +1,319 @@
+@import "tailwindcss" ;
+
+
+/* Base styles */
+@layer base {
+  :root {
+    /* Base Colors */
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-secondary: #6b7280;
+    --color-secondary-hover: #4b5563;
+
+    /* Background Colors */
+    --color-background-default: #f8fafc;
+    --color-surface-default: #ffffff;
+    --color-surface-hover: #f1f5f9;
+    --color-surface-active: #e2e8f0;
+
+    /* Text Colors */
+    --color-text-default: #1f2937;
+    --color-text-muted: #6b7280;
+
+    /* Border Colors */
+    --color-border-default: #e5e7eb;
+    --color-border-hover: #d1d5db;
+
+    /* Shadow Colors */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    /* Neutral Gray Colors */
+    --color-neutral-gray-50: #f9fafb;
+    --color-neutral-gray-100: #f3f4f6;
+    --color-neutral-gray-200: #e5e7eb;
+    --color-neutral-gray-300: #d1d5db;
+    --color-neutral-gray-700: #374151;
+
+    /* Success Colors */
+    --color-success-bg: #ecfdf5;
+    --color-success-text: #047857;
+    --color-success-border: #a7f3d0;
+    --color-success-icon: #059669;
+
+    /* Info Colors */
+    --color-info-bg: #eff6ff;
+    --color-info-text: #1d4ed8;
+    --color-info-border: #bfdbfe;
+    --color-info-icon: #3b82f6;
+
+    /* Warning Colors */
+    --color-warning-bg: #fffbeb;
+    --color-warning-text: #b45309;
+    --color-warning-border: #fcd34d;
+    --color-warning-icon: #d97706;
+
+    /* Error Colors */
+    --color-error-bg: #fef2f2;
+    --color-error-text: #b91c1c;
+    --color-error-border: #fecaca;
+    --color-error-icon: #dc2626;
+
+    /* Primary Colors */
+    --color-primary-focus: #1e40af;
+    --color-primary-disabled: #93c5fd;
+    --color-text-on-primary: #ffffff;
+
+    /* Secondary Colors */
+    --color-secondary-focus: #374151;
+    --color-secondary-disabled: #d1d5db;
+    --color-text-on-secondary: #ffffff;
+
+    /* Neutral Colors */
+    --color-neutral-white: #ffffff;
+    --color-neutral-gray-400: #9ca3af;
+    --color-neutral-gray-500: #6b7280;
+    --color-neutral-gray-600: #4b5563;
+    --color-neutral-gray-800: #1f2937;
+    --color-neutral-gray-900: #111827;
+    --color-neutral-black: #000000;
+
+    /* Surface & Background */
+    --color-background-subtle: var(--color-neutral-gray-50);
+    --color-surface-raised: var(--color-neutral-white);
+    --color-border-subtle: var(--color-neutral-gray-200);
+
+    /* Text Colors */
+    --color-text-disabled: var(--color-neutral-gray-400);
+  }
+
+  /* Apply base styles */
+  body {
+    background-color: var(--color-background-default);
+    color: var(--color-text-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Component-specific styles */
+  
+  /* Tag styles */
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ease-in-out;
+  }
+
+  .tag:hover {
+    @apply opacity-80;
+  }
+
+  .tag-icon {
+    @apply -ml-0.5 mr-1.5;
+  }
+
+  .tag-dismiss {
+    @apply -mr-1 ml-1.5 rounded p-0.5 transition-colors duration-200;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .tag-dismiss:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Tab styles */
+  .tabs-container {
+    @apply relative;
+  }
+
+  .tab {
+    @apply relative py-3 px-4 inline-flex items-center gap-2 text-sm font-medium border-b-2 border-transparent transition-all duration-200 ease-in-out outline-none text-[--color-text-muted] hover:text-[--color-text-default];
+  }
+
+  .tab:not([disabled]) {
+    @apply cursor-pointer hover:border-[--color-primary]/30 hover:bg-[--color-surface-hover];
+  }
+
+  .tab[disabled] {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .tab[aria-selected="true"] {
+    @apply border-[--color-primary] text-[--color-primary] font-semibold;
+  }
+
+  .tab-content {
+    @apply py-6 px-1;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Direct Button Hover/Focus Styles (Workaround for JIT issue) */
+/* Ensure these selectors are specific enough */
+
+/* We target based on the classes applied by Button.tsx */
+.bg-\[--color-primary\]:not(:disabled):hover {
+  background-color: var(--color-primary-hover);
+}
+.bg-\[--color-secondary\]:not(:disabled):hover {
+  background-color: var(--color-secondary-hover);
+}
+.border-\[--color-primary\].text-\[--color-primary\]:not(:disabled):hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+/* Be specific for ghost to avoid conflict with outline */
+.text-\[--color-primary\]:not(.border-\[--color-primary\]):not(.bg-\[--color-primary\]):not(:disabled):hover {
+  /* Assuming --color-primary-rgb exists or use a hex value */
+  /* background-color: theme(colors.blue.500 / 0.1); /* Example using Tailwind theme function if preferred */
+  background-color: rgba(59, 130, 246, 0.1); /* Or direct RGBA */
+}
+
+.bg-\[--color-error-bg\]:not(:disabled):hover {
+  background-color: var(--color-error-text);
+  color: var(--color-neutral-white); /* Ensure text is white on hover */
+}
+
+/* Dark theme */
+.dark {
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-focus: #2563eb;
+  --color-primary-disabled: #1e3a8a;
+  --color-text-on-primary: #ffffff;
+
+  --color-secondary: #9ca3af;
+  --color-secondary-hover: #6b7280;
+  --color-secondary-focus: #4b5563;
+  --color-secondary-disabled: #374151;
+  --color-text-on-secondary: #000000;
+
+  --color-background-default: #111827;
+  --color-surface-default: #1f2937;
+  --color-surface-hover: #2d3748;
+  --color-surface-active: #374151;
+
+  --color-text-default: #f9fafb;
+  --color-text-muted: #9ca3af;
+
+  --color-border-default: #374151;
+  --color-border-hover: #4b5563;
+
+  /* Neutral Gray Colors */
+  --color-neutral-gray-50: #374151;
+  --color-neutral-gray-100: #1f2937;
+  --color-neutral-gray-200: #374151;
+  --color-neutral-gray-300: #4b5563;
+  --color-neutral-gray-700: #d1d5db;
+
+  /* Success Colors */
+  --color-success-bg: #064e3b;
+  --color-success-text: #34d399;
+  --color-success-border: #065f46;
+  --color-success-icon: #10b981;
+
+  /* Info Colors */
+  --color-info-bg: #1e3a8a;
+  --color-info-text: #60a5fa;
+  --color-info-border: #1d4ed8;
+  --color-info-icon: #3b82f6;
+
+  /* Warning Colors */
+  --color-warning-bg: #78350f;
+  --color-warning-text: #fbbf24;
+  --color-warning-border: #92400e;
+  --color-warning-icon: #f59e0b;
+
+  /* Error Colors */
+  --color-error-bg: #7f1d1d;
+  --color-error-text: #f87171;
+  --color-error-border: #991b1b;
+  --color-error-icon: #ef4444;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-default: #111827;
+    --color-surface-default: #1f2937;
+    --color-surface-hover: #2d3748;
+    --color-surface-active: #374151;
+
+    --color-text-default: #f9fafb;
+    --color-text-muted: #9ca3af;
+
+    --color-border-default: #374151;
+    --color-border-hover: #4b5563;
+
+    /* Base Colors */
+    --color-primary: #60a5fa;
+    --color-primary-hover: #3b82f6;
+    --color-secondary: #9ca3af;
+    --color-secondary-hover: #6b7280;
+
+    /* Background Colors */
+    --color-background-default: #111827;
+    --color-surface-default: #1f2937;
+
+    /* Text Colors */
+    --color-text-default: #f9fafb;
+    --color-text-muted: #9ca3af;
+
+    /* Border Colors */
+    --color-border-default: #374151;
+
+    /* Neutral Gray Colors */
+    --color-neutral-gray-50: #374151;
+    --color-neutral-gray-100: #1f2937;
+    --color-neutral-gray-200: #374151;
+    --color-neutral-gray-300: #4b5563;
+    --color-neutral-gray-700: #d1d5db;
+
+    /* Success Colors */
+    --color-success-bg: #064e3b;
+    --color-success-text: #34d399;
+    --color-success-border: #065f46;
+    --color-success-icon: #10b981;
+
+    /* Info Colors */
+    --color-info-bg: #1e3a8a;
+    --color-info-text: #60a5fa;
+    --color-info-border: #1d4ed8;
+    --color-info-icon: #3b82f6;
+
+    /* Warning Colors */
+    --color-warning-bg: #78350f;
+    --color-warning-text: #fbbf24;
+    --color-warning-border: #92400e;
+    --color-warning-icon: #f59e0b;
+
+    /* Error Colors */
+    --color-error-bg: #7f1d1d;
+    --color-error-text: #f87171;
+    --color-error-border: #991b1b;
+    --color-error-icon: #ef4444;
+  }
+}
+
+/* Input Focus Refinement */
+/* Target the input element generated by Input.tsx */
+input[class*="border-\[--color-border-default\]"]:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); /* Subtle focus glow */
+}
+input[class*="border-\[--color-error-border\]"]:focus {
+  border-color: var(--color-error-text);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2); /* Error focus glow (assuming DC2626) */
+}

@@ -1,0 +1,138 @@
+import { Meta } from '@storybook/blocks';
+import { ColorTokens } from './ColorTokens';
+
+<Meta title="Foundation/Colors" />
+
+# Color System
+
+Our color system is built on a token-based approach, ensuring consistency, accessibility, and flexibility across the design system. It supports both light and dark themes while maintaining WCAG compliance.
+
+## Color Palette
+
+### Base Colors
+- **Primary**: `--color-primary` - Main brand color
+- **Secondary**: `--color-secondary` - Supporting brand color
+- **Tertiary**: `--color-tertiary` - Accent color
+
+### Neutral Colors
+- **Backgrounds**: 
+  - `--color-background-default` - Default background
+  - `--color-background-subtle` - Subtle background
+  - `--color-background-muted` - Muted background
+- **Borders**: 
+  - `--color-border-default` - Default border
+  - `--color-border-subtle` - Subtle border
+- **Text**:
+  - `--color-text-default` - Default text
+  - `--color-text-subtle` - Subtle text
+  - `--color-text-muted` - Muted text
+
+### Semantic Colors
+- **Success**: `--color-success` - Positive actions/results
+- **Info**: `--color-info` - Informational messages
+- **Warning**: `--color-warning` - Cautionary messages
+- **Error**: `--color-error` - Error states/messages
+
+## Usage Guidelines
+
+### Color Application
+```css
+/* Using color tokens */
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  .button {
+    background-color: var(--color-primary-dark);
+  }
+}
+```
+
+### Color Combinations
+| Background | Text | Usage |
+|------------|------|-------|
+| Primary | Text on Primary | Primary buttons, CTAs |
+| Secondary | Text on Secondary | Secondary actions |
+| Success | Text on Success | Success states |
+| Error | Text on Error | Error states |
+
+## Accessibility
+
+### Contrast Ratios
+All color combinations meet WCAG 2.1 AA standards:
+- Normal text: 4.5:1 minimum
+- Large text: 3:1 minimum
+- UI components: 3:1 minimum
+
+### Color Blindness
+- Avoid using color alone to convey information
+- Use patterns or text labels in addition to color
+- Test with color blindness simulators
+
+## Theme Support
+
+### Light Theme
+Default theme with light backgrounds and dark text.
+
+### Dark Theme
+Dark theme with dark backgrounds and light text. Automatically switches based on system preferences or can be manually toggled.
+
+## Implementation
+
+### CSS Variables
+All colors are defined as CSS variables for easy theming and maintenance:
+
+```css
+:root {
+  /* Base Colors */
+  --color-primary: #0066cc;
+  --color-secondary: #6c757d;
+  --color-tertiary: #6610f2;
+
+  /* Neutral Colors */
+  --color-background-default: #ffffff;
+  --color-background-subtle: #f8f9fa;
+  --color-border-default: #dee2e6;
+
+  /* Semantic Colors */
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-default: #1a1a1a;
+    --color-background-subtle: #2d2d2d;
+    --color-border-default: #404040;
+  }
+}
+```
+
+## Best Practices
+
+✅ **Do:**
+- Use semantic color tokens
+- Test color combinations for accessibility
+- Consider dark mode support
+- Use consistent color application
+
+❌ **Don't:**
+- Use hardcoded color values
+- Rely solely on color for meaning
+- Use low contrast combinations
+- Mix different color systems
+
+## Examples
+
+<ColorTokens />
+
+## Resources
+- [WCAG 2.1 Color Contrast Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+- [Color Blindness Simulator](https://www.toptal.com/designers/colorfilter)
+- [Color Contrast Checker](https://webaim.org/resources/contrastchecker/) 
