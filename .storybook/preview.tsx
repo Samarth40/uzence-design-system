@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import type { ReactNode } from 'react';
 import React from 'react';
+import { fn } from '@storybook/test';
 import '../src/index.css';
 
 const preview: Preview = {
