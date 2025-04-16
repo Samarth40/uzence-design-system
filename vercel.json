@@ -1,16 +1,12 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
+  "buildCommand": "npm run build && npm run build-storybook",
   "outputDirectory": "storybook-static",
   "framework": "vite",
   "rewrites": [
     { 
       "source": "/",
-      "destination": "/dist/index.html"
-    },
-    {
-      "source": "/assets/:path*",
-      "destination": "/dist/assets/:path*"
+      "destination": "/index.html"
     },
     {
       "source": "/storybook",

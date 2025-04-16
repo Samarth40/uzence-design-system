@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook-static",
-    "vercel-build": "npm run build && npm run build-storybook && cp -r dist storybook-static/"
+    "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.7",

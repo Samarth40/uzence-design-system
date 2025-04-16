@@ -29,7 +29,7 @@ const config: StorybookConfig = {
     "autodocs": "tag",
     "defaultName": "Documentation"
   },
-  "staticDirs": ["../public"],
+  "staticDirs": ["../public", "../dist"],
   "core": {
     "builder": "@storybook/builder-vite",
     "disableTelemetry": true
@@ -55,7 +55,8 @@ const config: StorybookConfig = {
       server: {
         ...config.server,
         fs: {
-          strict: false
+          strict: false,
+          allow: ['..']
         }
       }
     };
