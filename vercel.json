@@ -1,6 +1,7 @@
 {
   "version": 2,
   "buildCommand": "npm run build && npm run build-storybook",
+  "installCommand": "npm install",
   "outputDirectory": "storybook-static",
   "framework": "vite",
   "rewrites": [
@@ -15,6 +16,17 @@
     {
       "source": "/storybook/(.*)",
       "destination": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https: http:;"
+        }
+      ]
     }
   ]
 } 
