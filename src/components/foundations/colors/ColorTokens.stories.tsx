@@ -1,5 +1,4 @@
 // Placeholder for Color Tokens Storybook documentation
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ColorTokens from './ColorTokens';
 
